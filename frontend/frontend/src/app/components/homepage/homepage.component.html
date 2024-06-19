@@ -1,0 +1,60 @@
+
+  <div class="wrapper ">
+    <mat-card class="example-card">
+      <div class="text-wrapper">
+        <div class="card-row-1-text-header-meter">
+          FROM DATE : &nbsp;
+        </div>
+        <mat-form-field appearance="fill" class="filter-fields">
+          <mat-label>From</mat-label>
+          <input matInput [matDatepicker]="fromPicker" [(ngModel)]="fromDate" (ngModelChange)="getAllDetails()">
+          <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+          <mat-datepicker #fromPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div class="text-wrapper">
+        <div class="card-row-1-text-header-meter">
+          TO DATE : &nbsp;
+        </div>
+        <mat-form-field appearance="fill" class="filter-fields">
+          <mat-label>To</mat-label>
+          <input matInput [matDatepicker]="toPicker" [(ngModel)]="toDate" (ngModelChange)="getAllDetails()">
+          <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+          <mat-datepicker #toPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="text-wrapper" *ngIf="imageList && imageList.length > 0">
+        <div class="card-row-1-text-header-meter">
+          Image Selection : &nbsp;
+        </div>
+        <mat-form-field appearance="fill" class="filter-fields">
+          <mat-label> Image </mat-label>
+          <mat-select [(ngModel)]="imageSelected" (ngModelChange)="afterImageSelection()">
+            <mat-option *ngFor="let image of imageList" [value]=image>
+                {{image}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+    </mat-card>
+  </div>
+
+  <div class="imageWrapper" *ngIf="imageList && imageList.length <= 0">
+    <div>No Images Found</div>
+  </div>
+
+  <div class="imageWrapper" *ngIf="imageList && imageList.length > 0 && imageSelected !== undefined && imageSelected !== '' ">
+    <mat-card class="imageCard imageCard-1" style="margin-right: 5px;">
+      <div><img [src]="mainImage" alt="mainImage"></div>
+      <div><img [src]="odacImage" alt="odacImage"></div>
+    </mat-card>
+    <mat-card class="imageCard imageCard-2">
+      <div *ngFor="let eachImage of selectedSubImageFullData" style="width: 100%; margin-bottom: 10px; border: 1px solid black;">
+        <div style="padding: 5px; background-color: black; color: blanchedalmond; font-weight: bold; font-size: 120%;"> {{eachImage.label}} </div>
+        <img [src]="imageBasePath + '/' + eachImage.data" alt="subImage">
+      </div>
+    </mat-card>
+  </div>

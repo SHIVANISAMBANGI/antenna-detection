@@ -1,0 +1,14 @@
+<mat-toolbar class="header">
+    <mat-toolbar-row style="justify-content: space-between">
+        <span></span>
+        <span class="headingText">
+            {{heading}}
+        </span>
+        <span></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav-content class="belowContent">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

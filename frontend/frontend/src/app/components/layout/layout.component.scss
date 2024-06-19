@@ -1,0 +1,22 @@
+
+
+.header{
+  background-color: rgb(28, 77, 150); 
+  font-weight: bold;
+}
+
+.headingText{
+  color : white;
+  font-size:110%;
+  
+  vertical-align: middle;
+  @media screen and (max-width : 500px){
+    font-size:90%;
+  }
+}
+
+.belowContent{
+  height: 91vh;
+  margin-bottom:0px;
+  background-color: #d3d3d3;
+}
